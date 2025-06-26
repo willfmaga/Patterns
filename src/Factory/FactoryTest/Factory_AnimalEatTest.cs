@@ -14,7 +14,8 @@ namespace FactoryTest
             // arrange
             IAnimal animal = new AnimalBase();
             animal.Specie = Factory.Enumerators.Species.Dog;
-            animal = animal.Creator();
+            animal = animal.Factory();
+            
             var food = new DogFood();
 
             // act
@@ -30,7 +31,7 @@ namespace FactoryTest
             // arrange
             IAnimal animal = new AnimalBase();
             animal.Specie = Factory.Enumerators.Species.Dog;
-            animal = animal.Creator();
+            animal = animal.Factory();
             var food = new Food();
 
             // act
@@ -46,7 +47,7 @@ namespace FactoryTest
             // arrange
             IAnimal animal = new AnimalBase();
             animal.Specie = Factory.Enumerators.Species.Dog;
-            animal = animal.Creator();
+            animal = animal.Factory();
             var food = new BirdFood();
 
             // act
@@ -62,7 +63,7 @@ namespace FactoryTest
             // arrange
             IAnimal animal = new AnimalBase();
             animal.Specie = Factory.Enumerators.Species.Cat;
-            animal = animal.Creator();
+            animal = animal.Factory();
             var food = new CatFood() ;
 
             // act
@@ -78,7 +79,7 @@ namespace FactoryTest
             // arrange
             IAnimal animal = new AnimalBase();
             animal.Specie = Factory.Enumerators.Species.Bird;
-            animal = animal.Creator();
+            animal = animal.Factory();
             var food = new Food();
 
             // act
@@ -94,7 +95,7 @@ namespace FactoryTest
             // arrange
             IAnimal animal = new AnimalBase();
             animal.Specie = Factory.Enumerators.Species.Bird;
-            animal = animal.Creator();
+            animal = animal.Factory();
             var food = new BirdFood();
 
             // act
@@ -110,7 +111,7 @@ namespace FactoryTest
             // arrange
             IAnimal animal = new AnimalBase();
             animal.Specie = Factory.Enumerators.Species.Wolf;
-            animal = animal.Creator();
+            animal = animal.Factory();
             var food = new Food();
 
             // act

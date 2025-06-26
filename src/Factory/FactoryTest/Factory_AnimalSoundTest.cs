@@ -15,7 +15,7 @@ namespace FactoryTest
             animal.Specie = Factory.Enumerators.Species.Dog;
 
             // act 
-            animal = animal.Creator();
+            animal = animal.Factory();
 
             // assert 
             Assert.AreEqual("Au au au", animal.MakeSound());
@@ -29,7 +29,7 @@ namespace FactoryTest
             animal.Specie = Factory.Enumerators.Species.Cat;
 
             // act 
-            animal = animal.Creator();
+            animal = animal.Factory();
 
             // assert 
             Assert.AreEqual("Miau miau", animal.MakeSound());
@@ -43,7 +43,7 @@ namespace FactoryTest
             animal.Specie = Factory.Enumerators.Species.Bird;
 
             // act 
-            animal = animal.Creator();
+            animal = animal.Factory();
 
             // assert 
             Assert.AreEqual("Piu piu", animal.MakeSound());
@@ -57,7 +57,7 @@ namespace FactoryTest
             animal.Specie = Factory.Enumerators.Species.Wolf;
 
             // act 
-            animal = animal.Creator();
+            animal = animal.Factory();
 
             // assert 
             Assert.AreEqual("Au au au Auuuuuuu", animal.MakeSound());

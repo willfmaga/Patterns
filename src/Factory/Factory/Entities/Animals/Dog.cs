@@ -12,6 +12,10 @@ namespace Factory.Entities.Animals
 {
     public class Dog : AnimalBase
     {
+        public Dog()
+        {
+            eyesColor = "Brown";
+        }
         public override bool ToEat(IFood food)
         {
             if (food is Food || food is DogFood)

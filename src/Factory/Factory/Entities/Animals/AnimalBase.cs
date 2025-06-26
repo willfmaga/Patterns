@@ -7,6 +7,7 @@ namespace Factory.Entities.Animals
     public class AnimalBase : IAnimal
     {
         public Species Specie { get; set; }
+        public string eyesColor { get; set;}
 
         public virtual string MakeSound()
         {

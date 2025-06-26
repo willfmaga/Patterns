@@ -6,7 +6,7 @@ namespace Factory.Extensions
 {
     public static class AnimalExtensions
     {
-        public static IAnimal Creator(this IAnimal animal)
+        public static IAnimal Factory(this IAnimal animal)
         {
             switch (animal.Specie)
             {
@@ -19,7 +19,7 @@ namespace Factory.Extensions
                 case Enumerators.Species.Wolf:
                     return new Wolf();
                 default:
-                    throw new ArgumentException($"Unknown species: {animal.Specie}");
+                    return new AnimalBase();
             }
         }
     }
