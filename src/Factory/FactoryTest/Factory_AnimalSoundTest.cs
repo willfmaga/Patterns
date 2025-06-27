@@ -1,5 +1,5 @@
 using Factory.Entities.Animals;
-using Factory.Extensions;
+using Factory.Entities.Factory;
 using Factory.Interfaces;
 
 namespace FactoryTest
@@ -11,56 +11,51 @@ namespace FactoryTest
         public void WhenAnimalIsDogSoundLikeAuau()
         {
             // arrange 
-            IAnimal animal = new AnimalBase();
-            animal.Specie = Factory.Enumerators.Species.Dog;
-
+            IAnimal animal = AnimalFactory.Create(Factory.Enumerators.Species.Dog);
+            
             // act 
-            animal = animal.Factory();
+            var sound = animal.MakeSound();
 
             // assert 
-            Assert.AreEqual("Au au au", animal.MakeSound());
+            Assert.AreEqual("Au au au", sound);
         }
 
         [TestMethod]
         public void WhenAnimalIsCatSoundLikeMiauMiau()
         {
             // arrange 
-            IAnimal animal = new AnimalBase();
-            animal.Specie = Factory.Enumerators.Species.Cat;
+            IAnimal animal = AnimalFactory.Create(Factory.Enumerators.Species.Cat);
 
             // act 
-            animal = animal.Factory();
-
+            var sound = animal.MakeSound();
             // assert 
-            Assert.AreEqual("Miau miau", animal.MakeSound());
+            Assert.AreEqual("Miau miau", sound);
         }
 
         [TestMethod]
         public void WhenAnimalIsBirdSoundLikePiuPiu()
         {
             // arrange 
-            IAnimal animal = new AnimalBase();
-            animal.Specie = Factory.Enumerators.Species.Bird;
+            IAnimal animal = AnimalFactory.Create(Factory.Enumerators.Species.Bird);
 
             // act 
-            animal = animal.Factory();
+            var sound = animal.MakeSound();
 
             // assert 
-            Assert.AreEqual("Piu piu", animal.MakeSound());
+            Assert.AreEqual("Piu piu", sound);
         }
 
         [TestMethod]
         public void WhenAnimalIsWolfSoundLikeAuauAuuuuuuu()
         {
             // arrange 
-            IAnimal animal = new AnimalBase();
-            animal.Specie = Factory.Enumerators.Species.Wolf;
+            IAnimal animal =AnimalFactory.Create(Factory.Enumerators.Species.Wolf);
 
             // act 
-            animal = animal.Factory();
+            var sound = animal.MakeSound();
 
             // assert 
-            Assert.AreEqual("Au au au Auuuuuuu", animal.MakeSound());
+            Assert.AreEqual("Au au au Auuuuuuu", sound);
         }
     }
 }

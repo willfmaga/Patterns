@@ -8,7 +8,7 @@ namespace Factory.Enumerators
 {
     public enum Species
     {
-        Undefined =0,
+        
         Cat = 1,
         Dog = 2,
         Bird = 3,

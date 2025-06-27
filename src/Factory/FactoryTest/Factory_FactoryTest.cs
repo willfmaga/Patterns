@@ -1,5 +1,5 @@
 ﻿using Factory.Entities.Animals;
-using Factory.Extensions;
+using Factory.Entities.Factory;
 using Factory.Interfaces;
 
 namespace FactoryTest
@@ -11,10 +11,9 @@ namespace FactoryTest
         public void WhenEverythingIsFineResultIsOk()
         {
             //arrange 
-            IAnimal animal = new AnimalBase();
-            animal.Specie = Factory.Enumerators.Species.Cat;
             //act
-            animal = animal.Factory();
+            IAnimal animal = AnimalFactory.Create(Factory.Enumerators.Species.Cat);
+            
             
             //assert 
            Assert.IsInstanceOfType(animal, typeof(Cat));
@@ -24,10 +23,9 @@ namespace FactoryTest
         public void WhenSpecieIsDogResultIsDog()
         {
             //arrange 
-            IAnimal animal = new AnimalBase();
-            animal.Specie = Factory.Enumerators.Species.Dog;
             //act
-            animal = animal.Factory();
+            IAnimal animal = AnimalFactory.Create(Factory.Enumerators.Species.Dog);
+            
 
             //assert 
             Assert.IsInstanceOfType(animal, typeof(Dog));
@@ -37,11 +35,10 @@ namespace FactoryTest
         public void WhenSpecieIsUnknownThrowsException()
         {
             //arrange 
-            IAnimal animal = new AnimalBase();
-            animal.Specie = (Factory.Enumerators.Species)999; // Unknown species
-
             //act & assert
-            //Assert.ThrowsException<ArgumentException>(() => animal.Factory());
+            Assert.ThrowsException<ArgumentException>(() =>  AnimalFactory.Create((Factory.Enumerators.Species)999));
+           
+
         }
 
     }
