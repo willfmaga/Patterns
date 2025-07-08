@@ -14,6 +14,5 @@ namespace Factory.Entities.Animals
 
             return "Au au au";
         }
-       
     }
 }
