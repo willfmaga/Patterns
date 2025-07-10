@@ -23,7 +23,7 @@ namespace RedisAnimals.Filters
         /// <summary>
         /// Expiração do Cache em Segundos, padrão 3600 segundo (1 hora)
         /// </summary>
-        public int Expiracao = 60;
+        public int Expiracao = 3600;
         private string KEY { get; set; }
         private bool PerUser { get; set; }
         public string[] HeaderParameter { get; set; }
@@ -68,9 +68,9 @@ namespace RedisAnimals.Filters
 
                 var Environment = ConfigurationManager.AppSettings["Cache.Environment"];
 
-                var ignoreCache = HttpContext.Current?.Request?.Headers?.GetValues("Edenred-Ignore-Cache")?.GetValue(0)?.ToString()?.ToLower()?.Equals("true") ?? false;
+                var ignoreCache = HttpContext.Current?.Request?.Headers?.GetValues("Edenred-Frete-Ignore-Cache")?.GetValue(0)?.ToString()?.ToLower()?.Equals("true") ?? false;
                 if ((Environment.Equals("challenge") ||
-                     Environment.Equals("staging")||
+                     Environment.Equals("staging") ||
                      Environment.Equals("development"))
                     && ignoreCache)
                 {
@@ -118,7 +118,7 @@ namespace RedisAnimals.Filters
                     };
 
                     actionContext.Response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-                    actionContext.Response.Headers.Add("Edenred-Cache", "true");
+                    actionContext.Response.Headers.Add("Edenred-Frete-Cache", "true");
 
                     if (ForceExpiration)
                         cache.KeyDelete(new RedisKey(cacheKey));
@@ -126,7 +126,7 @@ namespace RedisAnimals.Filters
                     return;
                 }
 
-                actionContext.Request.Headers.Add("Edenred-Cache-Key", cacheKey);
+                actionContext.Request.Headers.Add("Edenred-Frete-Cache-Key", cacheKey);
             }
             catch (Exception ex)
             {
@@ -149,8 +149,8 @@ namespace RedisAnimals.Filters
                     return;
                 }
 
-                var cacheKey = actionExecutedContext.Request.Headers.Contains("Edenred-Cache-Key") ?
-                        actionExecutedContext.Request.Headers.GetValues("Edenred-Cache-Key").ToList().FirstOrDefault()
+                var cacheKey = actionExecutedContext.Request.Headers.Contains("Edenred-Frete-Cache-Key") ?
+                        actionExecutedContext.Request.Headers.GetValues("Edenred-Frete-Cache-Key").ToList().FirstOrDefault()
                         : string.Empty;
 
                 if (string.IsNullOrEmpty(cacheKey))
@@ -161,16 +161,7 @@ namespace RedisAnimals.Filters
                 IDatabase cache = RedisHelper.Connection.GetDatabase(db: DB);
                 var responseObject = actionExecutedContext.Response.Content.ReadAsStringAsync().Result;
 
-                if (ResponseType != null)
-                {
-                    var jsonObject = JObject.Parse(responseObject);
-                    var isSucesso = bool.TryParse(jsonObject["isSucesso"]?.ToString(), out var isSucessoConverted) ? isSucessoConverted : false;
-
-                    if (!isSucesso)
-                    {
-                        return;
-                    }
-                }
+                //TODO: SE EM ALGUM MOMENTO RETORNAR 200 COM MENSAGEM DE ERRO NO BODY, VERIFICAR AQUI responseObject E USAR O RETURN PARA NÃO ESCREVER NO CACHE
 
                 cache.StringSet(new RedisKey(cacheKey), responseObject, expiry: new TimeSpan(0, 0, Expiracao));
 

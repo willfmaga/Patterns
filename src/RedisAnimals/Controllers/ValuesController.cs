@@ -1,15 +1,8 @@
-﻿using Microsoft.SqlServer.Server;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-
+﻿using RedisAnimals.DTOs;
 using RedisAnimals.Filters;
 
 using System;
 using System.Collections.Generic;
-using System.Data.OleDb;
-using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
@@ -24,11 +17,23 @@ namespace RedisAnimals.Controllers
         }
 
         // GET api/values/5
-        [Cache(true, Expiracao = 300, ResponseType = typeof(ResponseHTTP))]
+        [Cache(true, ForceExpiration = true, Expiracao = 300, ResponseType = typeof(Animal))]
         public IHttpActionResult Get(int id)
         {
-            var animal = new Animal() { name = "Leão" };
-            return Ok(new ResponseHTTP { isSucesso = true, Resultado = JsonConvert.SerializeObject(animal) });
+            try
+            {
+                var animal = new Animal() { name = "Gato" };
+
+                if (animal is null)
+                    return BadRequest();
+
+                return Ok(animal);
+            }
+            catch (Exception)
+            {
+                return InternalServerError();
+            }
+
         }
 
         // POST api/values
@@ -45,16 +50,6 @@ namespace RedisAnimals.Controllers
         public void Delete(int id)
         {
         }
-
-        public class ResponseHTTP
-        {
-            public bool isSucesso { get; set; } = false;
-            public string Resultado { get; set; }
-        }
-
-        public class Animal
-        {
-            public string name { get; set; }
-        }
+              
     }
 }
