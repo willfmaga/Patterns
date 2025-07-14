@@ -1,0 +1,270 @@
+{
+	"info": {
+		"_postman_id": "8877a349-e938-4a66-abba-78aa5eff5cc9",
+		"name": "Patterns/RedisAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3872303"
+	},
+	"item": [
+		{
+			"name": "Animal",
+			"item": [
+				{
+					"name": "Get Animals - Cache 180s",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44374/api/Animal",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44374",
+							"path": [
+								"api",
+								"Animal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get By Id - Com erro não cria Cache",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44374/api/Animal/2",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44374",
+							"path": [
+								"api",
+								"Animal",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get By Id - Cache 120s",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44374/api/Animal/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44374",
+							"path": [
+								"api",
+								"Animal",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by Name - Cache 120s",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44374/api/Animal/gato",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44374",
+							"path": [
+								"api",
+								"Animal",
+								"gato"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by Name - Retorna 200 com erro no body",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44374/api/Animal/cachorro",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44374",
+							"path": [
+								"api",
+								"Animal",
+								"cachorro"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by Name - Retorna 500",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44374/api/Animal/ganso",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44374",
+							"path": [
+								"api",
+								"Animal",
+								"ganso"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Food",
+			"item": [
+				{
+					"name": "Get Food- Cache 180s",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44374/api/Food",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44374",
+							"path": [
+								"api",
+								"Food"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get By Id - Com erro não cria Cache Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44374/api/Food/2",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44374",
+							"path": [
+								"api",
+								"Food",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get By Id - Cache 120s Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44374/api/Food/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44374",
+							"path": [
+								"api",
+								"Food",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by Name - Cache 120s Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44374/api/Food/maca",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44374",
+							"path": [
+								"api",
+								"Food",
+								"maca"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by Name - Retorna 200 com erro no body Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44374/api/Food/arroz",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44374",
+							"path": [
+								"api",
+								"Food",
+								"arroz"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get by Name - Retorna 500 Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44374/api/Food/Mandioca",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44374",
+							"path": [
+								"api",
+								"Food",
+								"Mandioca"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
