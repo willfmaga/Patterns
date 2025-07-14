@@ -19,7 +19,4 @@ To call the HttpGet endpoints, you can use the Postman Collection in the *\postm
 **Redis Server**
 
 In all these examples we're using the *Toll Dev Redis*,you can use them with these credentials  
-Host:kubernetes-dev.repom.com.br  
-Port: 30603  
-Username: default  
-Password: Xsm9JB3MI1aOCoe6Pwwi  
+Dentro do projeto 
