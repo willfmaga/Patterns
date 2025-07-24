@@ -22,8 +22,9 @@ namespace FactoryBank.Entities.Account
         {
             if (amount > SavingsBalance)
             {
-                return "Insufficient funds for withdrawal.";
-            }else
+                throw new Exception("Insufficient funds for withdrawal.");
+            }
+            else
             {
                 SavingsBalance -= amount;
                 AccountBalance += amount;

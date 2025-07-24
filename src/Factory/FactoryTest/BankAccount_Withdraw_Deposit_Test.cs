@@ -61,5 +61,16 @@ namespace AccountFactoryTest
             // assert 
             Assert.AreEqual(4.8m, account.GetBalance());
         }
+
+        [TestMethod]
+        public void WhenAccountSavingsWithoutMoneyWhenWithdrawalThrowsException()
+        {
+            // arrange 
+            IAccount account = AccountFactory.Create("Savings");
+
+            // act 
+            // assert 
+            Assert.ThrowsException<Exception>(() => account.Withdraw(2m));
+        }
     }
 }
