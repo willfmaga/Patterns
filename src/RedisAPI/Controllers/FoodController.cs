@@ -26,7 +26,7 @@ namespace RedisAPI.Controllers
             return Ok(animals);
         }
 
-        [Cache(true,DB =1, Expiracao = 120, ResponseType = typeof(Animal))]
+        [Cache(true,DB =1, Expiracao = 120, ForceExpiration =true,  ResponseType = typeof(Animal))]
         [Route("api/Food/{id:int}")]
         public IHttpActionResult Get(int id)
         {
@@ -47,7 +47,7 @@ namespace RedisAPI.Controllers
 
         }
 
-        [Cache(false, DB = 1, Expiracao = 120, ResponseType = typeof(Animal))]
+        [Cache(false, DB = 1, Expiracao = 120, HeaderParameter = new[] { "Language", "Accept-Language" }, ResponseType = typeof(Animal))]
         [Route("api/Food/{nome}")]
         public IHttpActionResult Get(string nome)
         {

@@ -18,5 +18,4 @@ To call the HttpGet endpoints, you can use the Postman Collection in the *\postm
 
 **Redis Server**
 
-In all these examples we're using the *Toll Dev Redis*,you can use them with these credentials  
-Dentro do projeto 
+In all these examples we're using the *Toll Dev Redis*, Redis credentials are inside the project's web.config file 
