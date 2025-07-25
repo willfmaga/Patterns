@@ -132,7 +132,8 @@ namespace RedisAnimals.Filters
             }
             catch (Exception ex)
             {
-                throw ex;
+               
+                // Log the exception as needed, but do not throw it to avoid breaking the request pipeline
             }
 
             base.OnActionExecuting(actionContext);

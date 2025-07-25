@@ -13,5 +13,13 @@ namespace FactoryBank.Entities.Account
             this.AccountType = "Checking Account";
             this.AccountNumber = 1;
         }
+
+        public override string Withdraw(decimal amount)
+        {
+            var retorno = base.Withdraw(amount);
+
+            //logica de enviar email 
+            return retorno;
+        }
     }
 }

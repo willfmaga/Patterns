@@ -45,7 +45,7 @@ namespace RedisAPI.Controllers
 
         }
 
-        [Cache(true, Expiracao = 120, ResponseType = typeof(Animal))]
+        [Cache(true, Expiracao = 60, ResponseType = typeof(Animal))]
         [Route("api/Animal/{nome}")]
         public IHttpActionResult Get(string nome)
         {
